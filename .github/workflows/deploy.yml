@@ -2,14 +2,13 @@ name: Fake Deploy
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: production  # ✅ Required for GitHub to detect deployment
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
-      
       - name: Fake Deployment Step
-        run: echo "Deployed!"
+        run: echo "Deploying to production..."
