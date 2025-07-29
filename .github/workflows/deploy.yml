@@ -1,4 +1,4 @@
-name: Fake Deploy
+name: Deploy to Production
 
 on:
   push:
@@ -7,8 +7,16 @@ on:
 
 jobs:
   deploy:
+    name: Deploy Job
     runs-on: ubuntu-latest
-    environment: production  # ✅ Required for GitHub to detect deployment
+    environment:
+      name: production
     steps:
-      - name: Fake Deployment Step
-        run: echo "Deploying to production..."
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Simulate Deploy
+        run: echo "🚀 Deployment to production started"
+
+      - name: Notify GitHub of Deployment Success
+        run: echo "Deployment completed"
